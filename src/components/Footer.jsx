@@ -6,7 +6,7 @@ const Footer = () => {
 
     return (
         <footer className="relative bg-black text-white">
-            <div className="absolute top-0 left-0 w-full  overflow-hidden">
+            <div className="absolute top-0 left-0 w-full overflow-hidden">
                 <svg data-name="Layer 1"
                      xmlns="http://www.w3.org/2000/svg" 
                      viewBox="0 0 1200 120" 
@@ -19,18 +19,19 @@ const Footer = () => {
                 </svg>
 
                 {/* Centered Content with Line */}
-                <div className="flex items-center justify-center p-20 gap-10">
+                <div className="flex flex-col md:flex-row items-center justify-center p-10 gap-10">
                     <div className="flex flex-col gap-5 items-center text-center">
                         <img src={logo} alt="logo" className="w-9 h-9 object-contain" />
                         <h2 className="text-3xl font-semibold font-serif">
                             Jawwad Junaid <span className="sm:block hidden">| Website Developer</span>
                         </h2>
                         <p>
-                        I build websites that connect e-commerce, Web3, content, and data analysis to create powerful, user-friendly digital experiences.                        </p>
+                        I build websites that connect e-commerce, Web3, content, and data analysis to create powerful, user-friendly digital experiences.
+                        </p>
                     </div>
 
                     {/* Divider Line */}
-                    <div className="h-[200px] border-l-2 border-gray-400"></div>
+                    <div className="h-[150px] md:h-[200px] border-l-2 border-gray-400 hidden md:block"></div>
 
                     <div className="flex flex-col gap-4 items-center text-center">
                         <h2 className="text-[22px] font-semibold font-serif uppercase">Contact</h2>
@@ -51,11 +52,11 @@ const Footer = () => {
                 </div>
 
                 {/* Subscription Form */}
-                <div className="flex items-center justify-center mt-10">
-                    <form className="relative w-96">
+                <div className="flex items-center justify-center mt-10 px-5 md:px-0">
+                    <form className="relative w-full max-w-sm">
                         <input type="email" placeholder="Your email"
-                               className="w-full text-gray-800 p-4 rounded-full focus:outline-none focus:border border-pink-800" />
-                        <button type="submit" className="bg-tertiary px-8 py-4 rounded-full text-white absolute top-0 right-0">
+                               className="w-full text-gray-800 p-3 rounded-full focus:outline-none focus:border border-pink-800" />
+                        <button type="submit" className="bg-tertiary px-5 py-3 md:px-8 md:py-4  rounded-full text-white absolute right-0 top-0 bottom-0">
                             Submit
                         </button>
                     </form>
