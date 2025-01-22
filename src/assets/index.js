@@ -29,10 +29,14 @@ import tesla from "./company/tesla.png";
 import dotnet from "./company/dotnet.png";
 import ProNetizens from "./company/ProNetizens.webp";
 import inforox from "./company/inforox.png"
-
+import CollectionCars from "./CollectionCars.png";
 import carrent from "./carrent.png";
 import jobit from "./jobit.png";
 import tripguide from "./tripguide.png";
+import pesSolution from "./pesSolution.png";
+import babyLand from "./babyLand.png";
+import Jbsaeed from "./Jbsaeed.png";
+import lululemon from "./lululemon.png";
 
 export {
   inforox,
@@ -67,4 +71,9 @@ export {
   carrent,
   jobit,
   tripguide,
+  CollectionCars,
+  pesSolution,
+  babyLand,
+  Jbsaeed,
+  lululemon,
 };

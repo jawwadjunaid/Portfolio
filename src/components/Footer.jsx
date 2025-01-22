@@ -26,8 +26,7 @@ const Footer = () => {
                             Jawwad Junaid <span className="sm:block hidden">| Website Developer</span>
                         </h2>
                         <p>
-                        I build websites that connect e-commerce, Web3, content, and data analysis to create powerful, user-friendly digital experiences.
-                        </p>
+                        Transforming visions into vibrant digital realities—let's create something extraordinary together!</p>
                     </div>
 
                     {/* Divider Line */}
