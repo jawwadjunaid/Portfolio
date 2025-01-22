@@ -290,7 +290,7 @@ import {
         },
       ],
       image: Jbsaeed,
-      source_code_link: "jbsaeedstudio.com",
+      source_code_link: "https://www.jbsaeedstudio.com/",
     },
     {
       name: "Lululemon",
