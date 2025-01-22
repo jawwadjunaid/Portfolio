@@ -9,7 +9,7 @@ const Computers = ({ isMobile }) => {
 
   return (
     <mesh>
-      <hemisphereLight intensity={1.15} groundColor='black' />
+      <hemisphereLight intensity={1.15} groundColor="black" />
       <spotLight
         position={[-20, 50, 10]}
         angle={0.12}
@@ -53,13 +53,16 @@ const ComputersCanvas = () => {
     };
   }, []);
 
+  // Use a lower resolution for mobile to help with performance
+  const dpr = isMobile ? [1, 1.5] : [1, 2];
+
   return (
     <Canvas
-      frameloop='demand'
+      frameloop="demand"
       shadows
-      dpr={[1, 2]}
+      dpr={dpr}
       camera={{ position: [20, 3, 5], fov: 25 }}
-      gl={{ preserveDrawingBuffer: true }}
+      gl={{ preserveDrawingBuffer: true, antialias: !isMobile }}
     >
       <Suspense fallback={<CanvasLoader />}>
         <OrbitControls
