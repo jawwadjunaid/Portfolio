@@ -5,22 +5,20 @@ import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 import CanvasLoader from "../Loader";
 
 const Computers = ({ isMobile }) => {
-  const computer = useGLTF("./desktop_pc/scene.gltf");
+  const { scene } = useGLTF("./desktop_pc/scene.gltf");
 
   return (
     <mesh>
-      <hemisphereLight intensity={1.15} groundColor="black" />
+      <hemisphereLight intensity={0.8} groundColor="gray" />
       <spotLight
-        position={[-20, 50, 10]}
-        angle={0.12}
-        penumbra={1}
+        position={[-10, 10, 10]}
+        angle={0.2}
+        penumbra={0.5}
         intensity={1}
-        castShadow
-        shadow-mapSize={1024}
+        castShadow={false} // Shadows disabled for mobile performance
       />
-      <pointLight intensity={1} />
       <primitive
-        object={computer.scene}
+        object={scene}
         scale={isMobile ? 0.7 : 0.75}
         position={isMobile ? [0, -3.95, -2.2] : [0, -3.75, -1.5]}
         rotation={[-0.01, -0.2, -0.1]}
@@ -33,36 +31,20 @@ const ComputersCanvas = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    // Add a listener for changes to the screen size
     const mediaQuery = window.matchMedia("(max-width: 500px)");
-
-    // Set the initial value of the `isMobile` state variable
     setIsMobile(mediaQuery.matches);
-
-    // Define a callback function to handle changes to the media query
-    const handleMediaQueryChange = (event) => {
-      setIsMobile(event.matches);
-    };
-
-    // Add the callback function as a listener for changes to the media query
+    const handleMediaQueryChange = (e) => setIsMobile(e.matches);
     mediaQuery.addEventListener("change", handleMediaQueryChange);
-
-    // Remove the listener when the component is unmounted
-    return () => {
-      mediaQuery.removeEventListener("change", handleMediaQueryChange);
-    };
+    return () => mediaQuery.removeEventListener("change", handleMediaQueryChange);
   }, []);
-
-  // Use a lower resolution for mobile to help with performance
-  const dpr = isMobile ? [1, 1.5] : [1, 2];
 
   return (
     <Canvas
       frameloop="demand"
-      shadows
-      dpr={dpr}
+      shadows={false} // Disabled shadows for better performance
+      dpr={isMobile ? [1, 1.5] : [1, 2]}
       camera={{ position: [20, 3, 5], fov: 25 }}
-      gl={{ preserveDrawingBuffer: true, antialias: !isMobile }}
+      gl={{ preserveDrawingBuffer: false }} // Optimize for mobile
     >
       <Suspense fallback={<CanvasLoader />}>
         <OrbitControls
@@ -72,7 +54,6 @@ const ComputersCanvas = () => {
         />
         <Computers isMobile={isMobile} />
       </Suspense>
-
       <Preload all />
     </Canvas>
   );
